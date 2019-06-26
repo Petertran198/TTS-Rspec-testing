@@ -17,6 +17,12 @@ FactoryBot.define do
 
   end
 
+  factory :email, class: Task do 
+    association :user 
+    name {"Write an e-mail"}
+    priority { 1 }
+    due_date { DateTime.now }
+  end
 
   # the class: task is there so factory gem knows which model to look at
   factory :invalid_task, class: Task do 
@@ -27,5 +33,6 @@ FactoryBot.define do
     due_date { nil }
 
   end
+
 
 end

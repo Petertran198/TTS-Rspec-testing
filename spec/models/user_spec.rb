@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   #creates a variable and assign it whatver is in the { }
   let(:test_user) { FactoryBot.build(:user) }
-
+  let(:test_user_with_task) {FactoryBot.build(:user_with_tasks)}
   it "is valid with a first name , last name, and email" do
     expect(test_user).to be_valid
   end
@@ -25,6 +25,6 @@ RSpec.describe User, type: :model do
   end
 
   it "has two task created " do 
-    expect(test_user.tasks.length).to eq(2)
+    expect(test_user_with_task.tasks.length).to eq(2)
   end
 end
