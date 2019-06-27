@@ -1,0 +1,17 @@
+<%=form_with(model: @task, local: true) do |form| %>
+  <p><%= form.label :name %></p>
+  <p><%= form.text_field :name %></p>
+
+  <p><%= form.label :priority %></p>
+  <p><%= form.text_field :priority %></p>
+
+
+  <p><%= form.label :due_date %></p>
+  <p><%= form.text_field :due_date %></p>
+
+  <p><%= form.label :user_id %></p>
+  <p><%= form.collection_select(:user_id, User.all, :id, :email, {id: :task_user_id}) %> </p>
+
+  <%= form.submit %>
+
+<% end %>
