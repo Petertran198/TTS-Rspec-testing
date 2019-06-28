@@ -1,8 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  #creates a variable and assign it whatver is in the { }
-  let(:test_user) { FactoryBot.build(:user) }
+  #let statement creates a variable and assign it whatver is in the { }
+  # build_stubbed or stubs in general creates fake objects that are not saved to the db or have db access. Stubs allows for fake functions and less db calls   
+  let(:test_user) { FactoryBot.build_stubbed(:user) }
   let(:test_user_with_task) {FactoryBot.build(:user_with_tasks)}
   it "is valid with a first name , last name, and email" do
     expect(test_user).to be_valid

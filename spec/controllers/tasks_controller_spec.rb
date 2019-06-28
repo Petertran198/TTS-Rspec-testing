@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe TasksController, type: :controller do
 
+  before { sign_in(FactoryBot.create(:user)) }
   #get new page of Task
   describe "Get #index" do
 
@@ -166,6 +167,14 @@ RSpec.describe TasksController, type: :controller do
       task.save
       delete :destroy, params: {id: task.to_param}
       expect(response).to redirect_to(tasks_path)
+    end
+  end
+
+  describe "unauthenticate user" do 
+    it "will be asked to log in" do 
+      sign_out(:user)
+      get :index
+      expect(response).to redirect_to(new_user_session_path)
     end
   end
 

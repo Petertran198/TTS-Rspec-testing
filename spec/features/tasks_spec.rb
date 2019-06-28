@@ -5,6 +5,7 @@ require 'rails_helper'
 #describe and feature is the same thing but the convention is to use feature for intergration test and describe for unit test 
 feature 'tasks/index' do 
   scenario 'shows a list of tasks' do 
+    sign_in(FactoryBot.create(:user))
     FactoryBot.create(:homework)
     FactoryBot.create(:email)
 
@@ -18,6 +19,8 @@ end
 feature 'Adding New Task' do 
   scenario 'user adds a new task' do 
     user = FactoryBot.create(:user)
+    sign_in(user)
+
     visit tasks_path
     #expect takes in the step it takes to click a new task 
     expect {
@@ -36,10 +39,11 @@ feature 'Adding New Task' do
 
   feature "Edit task " do 
     scenario 'user edits task' do 
+
       task = FactoryBot.create(:homework)
+      sign_in(FactoryBot.create(:user))
 
       visit task_path(task)
-
       click_link 'Edit'
       fill_in "Name", with: "Master Rspec"
       fill_in "Priority", with: 2

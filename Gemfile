@@ -65,8 +65,11 @@ group :test do
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
   gem 'database_cleaner'
+  gem 'simplecov', require: false
+  #simplecov is a gem that shows u the percentage of ur application that is tested 
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'ffaker', '~> 2.11'
+gem 'devise'
